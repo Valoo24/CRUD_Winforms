@@ -45,7 +45,9 @@ namespace WUI
 
         private void btn_Modifier_Click(object sender, EventArgs e)
         {
-
+            SpecificData.SetSelectedFournisseur((Fournisseur)lst_Fournisseurs.SelectedItem);
+            using ModifyForm modifyForm = new ModifyForm();
+            modifyForm.ShowDialog();
         }
 
         private void btn_reloadList_Click(object sender, EventArgs e)
@@ -62,9 +64,12 @@ namespace WUI
             using SearchForm searchForm = new SearchForm();
             searchForm.ShowDialog();
             lst_Fournisseurs.Items.Clear();
-            foreach(Fournisseur fournisseur in SpecificData.GetSearchedList())
+            if(!SpecificData.SearchListIsNull())
             {
-                lst_Fournisseurs.Items.Add(fournisseur);
+                foreach (Fournisseur fournisseur in SpecificData.GetSearchedList())
+                {
+                    lst_Fournisseurs.Items.Add(fournisseur);
+                }
             }
         }
     }

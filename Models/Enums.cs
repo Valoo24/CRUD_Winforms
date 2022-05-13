@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    enum SearchType 
+    public enum SearchType 
     { ID = 0, 
       Nom = 1,
-      CodePostal = 2,
-      Pays = 3
+      Pays = 2
     }
 }

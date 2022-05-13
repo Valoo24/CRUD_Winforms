@@ -23,7 +23,7 @@ namespace WUI
         {
             IList<Fournisseur> FurnisherFound = new List<Fournisseur>();
 
-            if(cmb_searchChoice.Text == "ID")
+            if(cmb_searchChoice.Text == SearchType.ID.ToString())
             {
                 foreach(Fournisseur fournisseur in SpecificData.GetFurnisherList())
                 {
@@ -33,15 +33,45 @@ namespace WUI
                     }
                 }
             }
+            else if(cmb_searchChoice.Text == SearchType.Nom.ToString())
+            {
+                foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
+                {
+                    if (fournisseur.Name == txt_search.Text)
+                    {
+                        FurnisherFound.Add(fournisseur);
+                    }
+                }
+            }
+            else if(cmb_searchChoice.Text == SearchType.Pays.ToString())
+            {
+                foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
+                {
+                    if (fournisseur.Country == txt_search.Text)
+                    {
+                        FurnisherFound.Add(fournisseur);
+                    }
+                }
+            }
 
-            SpecificData.SetSearchedList(FurnisherFound);
+            if (FurnisherFound.Count == 0)
+            {
+                MessageBox.Show("Aucun fournisseur correspondant à votre recherche n'a été trouvé.");
+            }
+            else
+            {
+                SpecificData.SetSearchedList(FurnisherFound);
+            }
 
             this.Close();
         }
 
         private void SearchForm_Load(object sender, EventArgs e)
         {
-
+            cmb_searchChoice.Items.Clear();
+            cmb_searchChoice.Items.Add(SearchType.ID);
+            cmb_searchChoice.Items.Add(SearchType.Nom);
+            cmb_searchChoice.Items.Add(SearchType.Pays);
         }
     }
 }

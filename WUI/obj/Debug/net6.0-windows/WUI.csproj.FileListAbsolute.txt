@@ -24,3 +24,4 @@ C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\BLL.pdb
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\DAL.pdb
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.CreationForm.resources
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.SearchForm.resources
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.ModifyForm.resources

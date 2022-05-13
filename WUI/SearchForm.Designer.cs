@@ -84,7 +84,7 @@
             this.Controls.Add(this.txt_search);
             this.Controls.Add(this.cmb_searchChoice);
             this.Name = "SearchForm";
-            this.Text = "SearchForm";
+            this.Text = "Recherche d\'un fournisseur";
             this.Load += new System.EventHandler(this.SearchForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

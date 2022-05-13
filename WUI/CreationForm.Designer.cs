@@ -203,7 +203,7 @@
             this.Controls.Add(this.txt_nom_du_fournisseur);
             this.Controls.Add(this.lbl_Nom);
             this.Name = "CreationForm";
-            this.Text = "CreationForm";
+            this.Text = "Création d\'un fournisseur";
             this.ResumeLayout(false);
             this.PerformLayout();
 

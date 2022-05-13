@@ -12,7 +12,9 @@ namespace BLL
     {
         static int LastID = 0;
         static IList<Fournisseur> FurnisherList = new List<Fournisseur>();
-        static IList<Fournisseur> FurnisherFoundList;
+        static IList<Fournisseur>? FurnisherFoundList;
+        static Fournisseur SelectedFournisseur;
+        #region Méthodes ID
         public static int GetID(string FilePath)
         {
             return FileUtility.GetLastID(FilePath);
@@ -25,6 +27,8 @@ namespace BLL
         {
             return LastID;
         }
+        #endregion
+        #region Méthodes FurnisherList
         public static IList<Fournisseur> GetFurnisherList()
         {
             return FurnisherList;
@@ -37,6 +41,8 @@ namespace BLL
         {
             FurnisherList.Add(NewFournisseur);
         }
+        #endregion
+        #region Méthodes SearchedList
         public static IList<Fournisseur> GetSearchedList()
         {
             return FurnisherFoundList;
@@ -45,5 +51,27 @@ namespace BLL
         {
             FurnisherFoundList = SearchedList;
         }
+        public static bool SearchListIsNull()
+        {
+            if (FurnisherFoundList.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+        #region Méthodes SelectedFournisseur
+        public static Fournisseur GetSelectedFournisseur()
+        {
+            return SelectedFournisseur;
+        }
+        public static void SetSelectedFournisseur(Fournisseur Furnisher)
+        {
+            SelectedFournisseur = Furnisher;
+        }
+        #endregion
     }
 }
