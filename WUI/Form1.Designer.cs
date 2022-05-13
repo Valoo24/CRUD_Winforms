@@ -60,8 +60,9 @@
             // chargerUnFichierToolStripMenuItem
             // 
             this.chargerUnFichierToolStripMenuItem.Name = "chargerUnFichierToolStripMenuItem";
-            this.chargerUnFichierToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chargerUnFichierToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.chargerUnFichierToolStripMenuItem.Text = "Charger un fichier";
+            this.chargerUnFichierToolStripMenuItem.Click += new System.EventHandler(this.chargerUnFichierToolStripMenuItem_Click);
             // 
             // lst_Fournisseurs
             // 
@@ -80,6 +81,7 @@
             this.btn_Creer.TabIndex = 2;
             this.btn_Creer.Text = "Ajouter un fournisseur";
             this.btn_Creer.UseVisualStyleBackColor = true;
+            this.btn_Creer.Click += new System.EventHandler(this.btn_Creer_Click);
             // 
             // btn_Modifier
             // 
@@ -122,6 +124,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main_Form";
             this.Text = "Liste de fournisseurs";
+            this.Load += new System.EventHandler(this.Main_Form_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
