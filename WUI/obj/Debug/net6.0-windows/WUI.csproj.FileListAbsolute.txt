@@ -1,0 +1,17 @@
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\WUI.exe
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\WUI.deps.json
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\WUI.runtimeconfig.json
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\WUI.dll
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\WUI.pdb
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.csproj.AssemblyReference.cache
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.Main_Form.resources
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.csproj.GenerateResource.cache
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.AssemblyInfoInputs.cache
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.AssemblyInfo.cs
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.csproj.CoreCompileInputs.cache
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.dll
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\refint\WUI.dll
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.pdb
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.genruntimeconfig.cache
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\ref\WUI.dll
