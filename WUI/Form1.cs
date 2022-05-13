@@ -1,11 +1,11 @@
 using Models;
+using BLL;
 using System.Text;
 
 namespace WUI
 {
     public partial class Main_Form : Form
     {
-        public IList<Fournisseur> FourniseurList = new List<Fournisseur>();
         public Main_Form()
         {
             InitializeComponent();
@@ -18,24 +18,54 @@ namespace WUI
             OFD.Filter = "Ficher csv (*.csv)|*.csv";
             if (OFD.ShowDialog() == DialogResult.OK)
             {
-                FilePath = OFD.FileName;
-                string[] Content = File.ReadAllLines(FilePath, Encoding.UTF7);
-                for(int i = 1; i < Content.GetLength(0); i++)
-                {
-                    FourniseurList.Add(new Fournisseur(Content[i]));
-                    lst_Fournisseurs.Items.Add(FourniseurList[i - 1].ToString());
-                }
+               SpecificData.SetFurnisherList(DataAccess.GetListfromFile(OFD.FileName));
+               SpecificData.SetLastID(SpecificData.GetID(OFD.FileName));
+            }
+            foreach(Fournisseur fournisseur in SpecificData.GetFurnisherList())
+            {
+                lst_Fournisseurs.Items.Add(fournisseur);
             }
         }
 
         private void btn_Creer_Click(object sender, EventArgs e)
         {
-
+            using CreationForm creationForm = new CreationForm();
+            creationForm.ShowDialog();
+            lst_Fournisseurs.Items.Clear();
+            foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
+            {
+                lst_Fournisseurs.Items.Add(fournisseur);
+            }
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
             lst_Fournisseurs.Items.Clear();
+        }
+
+        private void btn_Modifier_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_reloadList_Click(object sender, EventArgs e)
+        {
+            lst_Fournisseurs.Items.Clear();
+            foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
+            {
+                lst_Fournisseurs.Items.Add(fournisseur);
+            }
+        }
+
+        private void btn_Chercher_Click(object sender, EventArgs e)
+        {
+            using SearchForm searchForm = new SearchForm();
+            searchForm.ShowDialog();
+            lst_Fournisseurs.Items.Clear();
+            foreach(Fournisseur fournisseur in SpecificData.GetSearchedList())
+            {
+                lst_Fournisseurs.Items.Add(fournisseur);
+            }
         }
     }
 }

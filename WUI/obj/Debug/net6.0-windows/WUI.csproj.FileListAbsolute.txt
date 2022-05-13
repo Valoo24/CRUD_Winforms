@@ -18,3 +18,9 @@ C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\ref\WUI.dll
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\Models.dll
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\Models.pdb
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.csproj.CopyComplete
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\BLL.dll
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\DAL.dll
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\BLL.pdb
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\bin\Debug\net6.0-windows\DAL.pdb
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.CreationForm.resources
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.SearchForm.resources
