@@ -43,11 +43,15 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(854, 24);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.menuStrip1.Size = new System.Drawing.Size(66, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -72,21 +76,22 @@
             this.sauvegarderLaListeToolStripMenuItem.Name = "sauvegarderLaListeToolStripMenuItem";
             this.sauvegarderLaListeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.sauvegarderLaListeToolStripMenuItem.Text = "Sauvegarder la liste";
+            this.sauvegarderLaListeToolStripMenuItem.Click += new System.EventHandler(this.sauvegarderLaListeToolStripMenuItem_Click);
             // 
             // lst_Fournisseurs
             // 
             this.lst_Fournisseurs.FormattingEnabled = true;
             this.lst_Fournisseurs.ItemHeight = 15;
-            this.lst_Fournisseurs.Location = new System.Drawing.Point(12, 27);
+            this.lst_Fournisseurs.Location = new System.Drawing.Point(12, 24);
             this.lst_Fournisseurs.Name = "lst_Fournisseurs";
-            this.lst_Fournisseurs.Size = new System.Drawing.Size(829, 379);
+            this.lst_Fournisseurs.Size = new System.Drawing.Size(1124, 379);
             this.lst_Fournisseurs.TabIndex = 1;
             // 
             // btn_Creer
             // 
             this.btn_Creer.Location = new System.Drawing.Point(12, 415);
             this.btn_Creer.Name = "btn_Creer";
-            this.btn_Creer.Size = new System.Drawing.Size(161, 23);
+            this.btn_Creer.Size = new System.Drawing.Size(220, 23);
             this.btn_Creer.TabIndex = 2;
             this.btn_Creer.Text = "Ajouter un fournisseur";
             this.btn_Creer.UseVisualStyleBackColor = true;
@@ -94,9 +99,9 @@
             // 
             // btn_Modifier
             // 
-            this.btn_Modifier.Location = new System.Drawing.Point(513, 415);
+            this.btn_Modifier.Location = new System.Drawing.Point(690, 415);
             this.btn_Modifier.Name = "btn_Modifier";
-            this.btn_Modifier.Size = new System.Drawing.Size(161, 23);
+            this.btn_Modifier.Size = new System.Drawing.Size(220, 23);
             this.btn_Modifier.TabIndex = 3;
             this.btn_Modifier.Text = "Modifier un fournisseur";
             this.btn_Modifier.UseVisualStyleBackColor = true;
@@ -104,9 +109,9 @@
             // 
             // btn_Supprimer
             // 
-            this.btn_Supprimer.Location = new System.Drawing.Point(680, 415);
+            this.btn_Supprimer.Location = new System.Drawing.Point(916, 415);
             this.btn_Supprimer.Name = "btn_Supprimer";
-            this.btn_Supprimer.Size = new System.Drawing.Size(161, 23);
+            this.btn_Supprimer.Size = new System.Drawing.Size(220, 23);
             this.btn_Supprimer.TabIndex = 4;
             this.btn_Supprimer.Text = "Supprimer un fournisseur";
             this.btn_Supprimer.UseVisualStyleBackColor = true;
@@ -114,9 +119,9 @@
             // 
             // btn_Chercher
             // 
-            this.btn_Chercher.Location = new System.Drawing.Point(179, 415);
+            this.btn_Chercher.Location = new System.Drawing.Point(238, 415);
             this.btn_Chercher.Name = "btn_Chercher";
-            this.btn_Chercher.Size = new System.Drawing.Size(161, 23);
+            this.btn_Chercher.Size = new System.Drawing.Size(220, 23);
             this.btn_Chercher.TabIndex = 5;
             this.btn_Chercher.Text = "Chercher un fournisseur";
             this.btn_Chercher.UseVisualStyleBackColor = true;
@@ -124,9 +129,9 @@
             // 
             // btn_reloadList
             // 
-            this.btn_reloadList.Location = new System.Drawing.Point(346, 415);
+            this.btn_reloadList.Location = new System.Drawing.Point(464, 415);
             this.btn_reloadList.Name = "btn_reloadList";
-            this.btn_reloadList.Size = new System.Drawing.Size(161, 23);
+            this.btn_reloadList.Size = new System.Drawing.Size(220, 23);
             this.btn_reloadList.TabIndex = 6;
             this.btn_reloadList.Text = "Recharger la liste";
             this.btn_reloadList.UseVisualStyleBackColor = true;
@@ -136,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 450);
+            this.ClientSize = new System.Drawing.Size(1148, 451);
             this.Controls.Add(this.btn_reloadList);
             this.Controls.Add(this.btn_Chercher);
             this.Controls.Add(this.btn_Supprimer);
@@ -144,6 +149,7 @@
             this.Controls.Add(this.btn_Creer);
             this.Controls.Add(this.lst_Fournisseurs);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main_Form";
             this.Text = "Liste de fournisseurs";

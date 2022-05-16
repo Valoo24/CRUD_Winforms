@@ -1,4 +1,3 @@
-ID;Name;Email;Street;City;PostCode;Country;IsWaitingForCommand;CreationDate;LastUpdatedDate
-00001;Test Fournisseur;Mail@Test.com;Rue du test 42;Amay;4540;Belgique;Oui;;
-00002;Test Fournisseur 2;Mail2@Test.com;Rue du Test 59;Moustier;72000;France;Non;;
+1;Test Fournisseur;Mail@Test.com;Rue du test 42;Amay;4540;Belgique;Oui;;
+2;Test Fournisseur 2;Mail2@Test.com;Rue du Test 59;Moustier;72000;France;Non;;
 LastID;00002

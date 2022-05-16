@@ -57,8 +57,7 @@ namespace WUI
                 txt_adresse_du_fournisseur.Text, txt_ville_du_fournisseur.Text, int.Parse(txt_Code_Postal_du_fournisseur.Text),
                 txt_pays_du_fournisseur.Text, ModifiedFurnisherIsWaiting);
 
-            SpecificData.SetSelectedFournisseur(ModifiedFurnisher);
-            SpecificData.ModifyFurnisherList();
+            SpecificData.ModifyFurnisherList(ModifiedFurnisher);
             this.Close();
         }
     }

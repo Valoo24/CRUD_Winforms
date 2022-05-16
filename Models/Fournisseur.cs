@@ -23,13 +23,23 @@
             this.City = Elements[4];
             this.PostCode = int.Parse(Elements[5]);
             this.Country = Elements[6];
-            if(Elements[7] == "Oui")
+
+            if(Elements[7] == CommandStatus.Oui.ToString())
             {
                 this.IsWaitingForCommand = true;
             }
-            else if(Elements[7] == "Non")
+            else if(Elements[7] == CommandStatus.Non.ToString())
             {
                 this.IsWaitingForCommand = false;
+            }
+
+            if (Elements.GetLength(0) > 8)
+            {
+                this.CreationDate = Convert.ToDateTime(Elements[8]);
+                if(Elements.GetLength(0) > 9)
+                {
+                    this.LastUpdatedDate = Convert.ToDateTime(Elements[9]);
+                }
             }
         }
         public Fournisseur(int FurnisherID, string FurnisherName, string FurnisherEmail, string FurnisherStreet, string FurnisherCity,
@@ -75,6 +85,25 @@
             }
 
             return FurnisherText;
+        }
+
+        public string FurnisherToSaveText()
+        {
+            string SaveText;
+            string CommandText;
+            if(this.IsWaitingForCommand)
+            {
+                CommandText = CommandStatus.Oui.ToString();
+            }
+            else
+            {
+                CommandText = CommandStatus.Non.ToString();
+            }
+
+            SaveText = $"{this.Id};{this.Name};{this.Email};{this.Street};{this.City};{this.PostCode};{this.Country};{CommandText};" +
+                $"{this.CreationDate};{this.LastUpdatedDate}";
+
+            return SaveText;
         }
     }
 }

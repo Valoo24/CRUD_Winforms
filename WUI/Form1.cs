@@ -1,6 +1,8 @@
 using Models;
 using BLL;
+using System;
 using System.Text;
+using System.IO;
 
 namespace WUI
 {
@@ -10,7 +12,7 @@ namespace WUI
         {
             InitializeComponent();
         }
-
+        #region Méthodes du menu "Fichier"
         private void chargerUnFichierToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string FilePath;
@@ -18,12 +20,18 @@ namespace WUI
             OFD.Filter = "Ficher csv (*.csv)|*.csv";
             if (OFD.ShowDialog() == DialogResult.OK)
             {
-               SpecificData.SetFurnisherList(DataAccess.GetListfromFile(OFD.FileName));
-               SpecificData.SetLastID(SpecificData.GetID(OFD.FileName));
+                LoadData(OFD.FileName);
             }
             ReloadListDisplay();
         }
 
+        private void sauvegarderLaListeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataAccess.SaveFurnisherFile(SpecificData.GetSavePath(), SpecificData.GetFurnisherList(), SpecificData.GetLastID());
+            MessageBox.Show("Fichier Enregistré avec succès !");
+        }
+        #endregion
+        #region Méthodes des boutons du Main_Form
         private void btn_Creer_Click(object sender, EventArgs e)
         {
             using CreationForm creationForm = new CreationForm();
@@ -33,15 +41,16 @@ namespace WUI
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            lst_Fournisseurs.Items.Clear();
+            LoadData(SpecificData.GetSavePath());
+            ReloadListDisplay();
         }
 
         private void btn_Modifier_Click(object sender, EventArgs e)
         {
-            SpecificData.SetSelectedFournisseur((Fournisseur)lst_Fournisseurs.SelectedItem);
-            using ModifyForm modifyForm = new ModifyForm();
-            modifyForm.ShowDialog();
-            ReloadListDisplay();
+                SpecificData.SetSelectedFournisseur((Fournisseur)lst_Fournisseurs.SelectedItem);
+                using ModifyForm modifyForm = new ModifyForm();
+                modifyForm.ShowDialog();
+                ReloadListDisplay();
         }
 
         private void btn_reloadList_Click(object sender, EventArgs e)
@@ -53,9 +62,9 @@ namespace WUI
         {
             using SearchForm searchForm = new SearchForm();
             searchForm.ShowDialog();
-            lst_Fournisseurs.Items.Clear();
             if(!SpecificData.SearchListIsNull())
             {
+                lst_Fournisseurs.Items.Clear();
                 foreach (Fournisseur fournisseur in SpecificData.GetSearchedList())
                 {
                     lst_Fournisseurs.Items.Add(fournisseur);
@@ -65,10 +74,11 @@ namespace WUI
 
         private void btn_Supprimer_Click(object sender, EventArgs e)
         {
-            SpecificData.DeleteInFurnisherList((Fournisseur)lst_Fournisseurs.SelectedItem);
-            ReloadListDisplay();
+                SpecificData.DeleteInFurnisherList((Fournisseur)lst_Fournisseurs.SelectedItem);
+                ReloadListDisplay();
         }
-
+        #endregion
+        #region Méthodes Custom
         private void ReloadListDisplay()
         {
             lst_Fournisseurs.Items.Clear();
@@ -77,5 +87,11 @@ namespace WUI
                 lst_Fournisseurs.Items.Add(fournisseur);
             }
         }
+        private void LoadData(string FilePath)
+        {
+            SpecificData.SetFurnisherList(DataAccess.GetListfromFile(FilePath));
+            SpecificData.SetLastID(SpecificData.GetIDFromFile(FilePath));
+        }
+        #endregion
     }
 }

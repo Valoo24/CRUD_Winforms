@@ -10,12 +10,13 @@ namespace BLL
 {
     public static class SpecificData
     {
+        static string SavePath = "Save_File2.csv";
         static int LastID = 0;
         static IList<Fournisseur> FurnisherList = new List<Fournisseur>();
-        static IList<Fournisseur>? FurnisherFoundList;
+        static IList<Fournisseur> FurnisherFoundList = new List<Fournisseur>();
         static Fournisseur SelectedFournisseur;
         #region Méthodes ID
-        public static int GetID(string FilePath)
+        public static int GetIDFromFile(string FilePath)
         {
             return FileUtility.GetLastID(FilePath);
         }
@@ -41,9 +42,8 @@ namespace BLL
         {
             FurnisherList.Add(NewFournisseur);
         }
-        public static void ModifyFurnisherList()
+        public static void ModifyFurnisherList(Fournisseur NewFurnisherInfo)
         {
-            Fournisseur NewFurnisherInfo = GetSelectedFournisseur();
             NewFurnisherInfo.SetNewUpdateDate();
             for(int i = 0; i < FurnisherList.Count; i++)
             {
@@ -89,5 +89,9 @@ namespace BLL
             SelectedFournisseur = Furnisher;
         }
         #endregion
+        public static string GetSavePath()
+        {
+            return SavePath;
+        }
     }
 }

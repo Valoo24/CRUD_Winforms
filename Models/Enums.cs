@@ -11,4 +11,9 @@ namespace Models
       Nom = 1,
       Pays = 2
     }
+    public enum CommandStatus
+    {
+        Oui = 0,
+        Non = 1
+    }
 }
