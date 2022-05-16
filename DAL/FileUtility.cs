@@ -5,7 +5,8 @@ namespace DAL
 {
     public static class FileUtility
     {
-        private static string FurnisherFileSavePath = "Saves/Save_File.csv";
+        private static string SaveFolderName = "Saves";
+        private static string FurnisherSaveFilePath = $"{SaveFolderName}/Save_File.csv";
         public static IList<Fournisseur> GetFurnisherData(string FilePath)
         {
             IList<Fournisseur> List = new List<Fournisseur>();
@@ -34,11 +35,11 @@ namespace DAL
         }
         public static void SaveFurnisherFile(IList<Fournisseur> FurnisherList, int LastID)
         {
-            if(File.Exists(FurnisherFileSavePath))
+            if(File.Exists(FurnisherSaveFilePath))
             {
-                File.Delete(FurnisherFileSavePath);
+                File.Delete(FurnisherSaveFilePath);
             }
-            using (FileStream FileSystem = File.Create(FurnisherFileSavePath))
+            using (FileStream FileSystem = File.Create(FurnisherSaveFilePath))
             {
                 foreach(Fournisseur fournisseur in FurnisherList)
                 {
@@ -49,7 +50,7 @@ namespace DAL
         }
         public static string GetSaveFurnicherFilePath()
         {
-            return FurnisherFileSavePath;
+            return FurnisherSaveFilePath;
         }
         private static void WriteInSaveFile(FileStream Filestream, string Text)
         {

@@ -65,7 +65,7 @@ namespace Models
 
         public override string ToString()
         {
-            string FurnisherText = $"{this.Id}\t{this.Name}\t{this.Email}\t{this.Street}\t{this.City}\t{this.PostCode}\t{this.Country}\t";
+            string FurnisherText = $"ID: {this.Id}\tNom: {this.Name}\tE-mail: {this.Email}\t Adresse: {this.Street},{this.PostCode} {this.City},{this.Country}\t";
 
             if(this.IsWaitingForCommand)
             {
@@ -78,12 +78,12 @@ namespace Models
 
             if(this.CreationDate != null)
             {
-                FurnisherText += $"Date de Création: {this.CreationDate}\t";
+                FurnisherText += $"Crée le: {this.CreationDate}\t";
             }
 
             if(this.LastUpdatedDate != null)
             {
-                FurnisherText += $"Date de la dernière mise à jour: {this.LastUpdatedDate}";
+                FurnisherText += $"Mis à jour le: {this.LastUpdatedDate}";
             }
 
             return FurnisherText;

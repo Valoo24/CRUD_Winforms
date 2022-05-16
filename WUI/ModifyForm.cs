@@ -15,6 +15,7 @@ namespace WUI
     public partial class ModifyForm : Form
     {
         int SelectedID = 0;
+        IList<TextBox> TextBoxList = new List<TextBox>();
         public ModifyForm()
         {
             InitializeComponent();
@@ -22,6 +23,12 @@ namespace WUI
 
         private void ModifyForm_Load(object sender, EventArgs e)
         {
+            TextBoxList.Add(txt_nom_du_fournisseur);
+            TextBoxList.Add(txt_email_du_fournisseur);
+            TextBoxList.Add(txt_adresse_du_fournisseur);
+            TextBoxList.Add(txt_ville_du_fournisseur);
+            TextBoxList.Add(txt_Code_Postal_du_fournisseur);
+            TextBoxList.Add(txt_pays_du_fournisseur);
             Fournisseur SelectedFurnisher = SpecificData.GetSelectedFournisseur();
             SelectedID = SelectedFurnisher.Id;
             txt_nom_du_fournisseur.Text = SelectedFurnisher.Name;
@@ -42,8 +49,9 @@ namespace WUI
 
         private void btn_modify_Click(object sender, EventArgs e)
         {
+            bool CanModify = true;
+            bool CanClose = true;
             bool ModifiedFurnisherIsWaiting = true;
-
             if(rdb_oui.Checked)
             {
                 ModifiedFurnisherIsWaiting = true;
@@ -53,12 +61,51 @@ namespace WUI
                 ModifiedFurnisherIsWaiting = false;
             }
 
-            Fournisseur ModifiedFurnisher = new Fournisseur(SelectedID, txt_nom_du_fournisseur.Text, txt_email_du_fournisseur.Text,
-                txt_adresse_du_fournisseur.Text, txt_ville_du_fournisseur.Text, int.Parse(txt_Code_Postal_du_fournisseur.Text),
-                txt_pays_du_fournisseur.Text, ModifiedFurnisherIsWaiting);
+            foreach(TextBox Box in TextBoxList)
+            {
+                if (!DataCheck.TextBoxHasText(Box.Text))
+                {
+                    CanModify = false;
+                }
+            }
 
-            SpecificData.ModifyFurnisherList(ModifiedFurnisher);
-            this.Close();
+            if(!int.TryParse(txt_Code_Postal_du_fournisseur.Text, out int Result))
+            {
+                CanModify = false;
+            }
+
+            if (CanModify)
+            {
+                Fournisseur ModifiedFurnisher = new Fournisseur(SelectedID, txt_nom_du_fournisseur.Text, txt_email_du_fournisseur.Text,
+                    txt_adresse_du_fournisseur.Text, txt_ville_du_fournisseur.Text, int.Parse(txt_Code_Postal_du_fournisseur.Text),
+                    txt_pays_du_fournisseur.Text, ModifiedFurnisherIsWaiting);
+
+                if (!ModifiedFurnisher.HasANameMinOfThreeChar())
+                {
+                    CanClose = false;
+                    MessageBox.Show("Le nom du fournisseur doit contenir au moins 3 lettres. Veuillez modifier le nom du fournisseur.");
+                }
+
+                if(!ModifiedFurnisher.HasAValidEMail())
+                {
+                    CanClose = false;
+                    MessageBox.Show("L'adresse e-amil du fournisseur n'a pas un format valide. Veuillez corrigier l'adresse e-amil du fournisseur.");
+                }
+
+                if (CanClose)
+                {
+                    SpecificData.ModifyFurnisherList(ModifiedFurnisher);
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Au moins un champ est manquant. Veuillez vérifier les informations saisies et remplir tous les champs.");
+                if (!int.TryParse(txt_Code_Postal_du_fournisseur.Text, out int result))
+                {
+                    MessageBox.Show("Le champ du code postal ne peut contenir que des nombres. Veuillez modifier correctement le champ du code postal.");
+                }
+            }
         }
     }
 }

@@ -25,7 +25,6 @@ namespace WUI
             bool CanCreate = true;
             bool CanClose = true;
             bool Command = true;
-            int Result;
             int NewID = SpecificData.GetLastID();
             NewID++;
             SpecificData.SetLastID(NewID);
@@ -46,7 +45,7 @@ namespace WUI
                 }
             }
 
-            if(!int.TryParse(txt_codePostal_du_fournisseur.Text, out Result))
+            if(!int.TryParse(txt_codePostal_du_fournisseur.Text, out int Result))
             {
                 CanCreate = false;
             }
@@ -77,13 +76,10 @@ namespace WUI
             }
             else
             {
-                if (!int.TryParse(txt_codePostal_du_fournisseur.Text, out Result))
+                    MessageBox.Show("Au moins un champ est manquant. Veuillez vérifier les informations saisies et remplir tous les champs.");
+                if (!int.TryParse(txt_codePostal_du_fournisseur.Text, out int result))
                 {
                     MessageBox.Show("Le champ du code postal ne peut contenir que des nombres. Veuillez modifier correctement le champ du code postal.");
-                }
-                else
-                {
-                    MessageBox.Show("Au moins un champ est manquant. Veuillez vérifier les informations saisies et remplir tous les champs.");
                 }
             }
         }

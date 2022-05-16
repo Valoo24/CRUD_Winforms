@@ -50,10 +50,18 @@ namespace WUI
 
         private void btn_Modifier_Click(object sender, EventArgs e)
         {
+            if (lst_Fournisseurs.SelectedItem != null)
+            {
                 SpecificData.SetSelectedFournisseur((Fournisseur)lst_Fournisseurs.SelectedItem);
                 using ModifyForm modifyForm = new ModifyForm();
                 modifyForm.ShowDialog();
                 ReloadListDisplay();
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez sélectionné aucun fournisseur à modifier. Veuillez sélectionner un fournisseur dans la liste" +
+                    " pour le modifier.");
+            }
         }
 
         private void btn_reloadList_Click(object sender, EventArgs e)

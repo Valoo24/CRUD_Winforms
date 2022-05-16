@@ -22,9 +22,10 @@ namespace WUI
         private void btn_search_Click(object sender, EventArgs e)
         {
             IList<Fournisseur> FurnisherFound = new List<Fournisseur>();
-
+            bool IDError = false;
             if(cmb_searchChoice.Text == SearchType.ID.ToString())
             {
+                if(int.TryParse(txt_search.Text, out int Result))
                 foreach(Fournisseur fournisseur in SpecificData.GetFurnisherList())
                 {
                     if(fournisseur.Id == int.Parse(txt_search.Text))
@@ -32,8 +33,14 @@ namespace WUI
                         FurnisherFound.Add(fournisseur);
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Pour chercher un fournisseur avec son ID, vous ne pouvez rentrez que des chiffres uniquement");
+                    IDError = true;
+                }
             }
-            else if(cmb_searchChoice.Text == SearchType.Nom.ToString())
+
+            if(cmb_searchChoice.Text == SearchType.Nom.ToString())
             {
                 foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
                 {
@@ -43,7 +50,7 @@ namespace WUI
                     }
                 }
             }
-            else if(cmb_searchChoice.Text == SearchType.Pays.ToString())
+            if(cmb_searchChoice.Text == SearchType.Pays.ToString())
             {
                 foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
                 {
@@ -54,16 +61,15 @@ namespace WUI
                 }
             }
 
-            if (FurnisherFound.Count == 0)
+            if (FurnisherFound.Count == 0 && !IDError)
             {
                 MessageBox.Show("Aucun fournisseur correspondant à votre recherche n'a été trouvé.");
             }
-            else
+            else if(FurnisherFound.Count > 0)
             {
                 SpecificData.SetSearchedList(FurnisherFound);
+                this.Close();
             }
-
-            this.Close();
         }
 
         private void SearchForm_Load(object sender, EventArgs e)
