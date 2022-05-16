@@ -14,6 +14,7 @@ namespace WUI
 {
     public partial class ModifyForm : Form
     {
+        int SelectedID = 0;
         public ModifyForm()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace WUI
         private void ModifyForm_Load(object sender, EventArgs e)
         {
             Fournisseur SelectedFurnisher = SpecificData.GetSelectedFournisseur();
+            SelectedID = SelectedFurnisher.Id;
             txt_nom_du_fournisseur.Text = SelectedFurnisher.Name;
             txt_adresse_du_fournisseur.Text = SelectedFurnisher.Street;
             txt_Code_Postal_du_fournisseur.Text = $"{SelectedFurnisher.PostCode}";
@@ -40,7 +42,24 @@ namespace WUI
 
         private void btn_modify_Click(object sender, EventArgs e)
         {
+            bool ModifiedFurnisherIsWaiting = true;
 
+            if(rdb_oui.Checked)
+            {
+                ModifiedFurnisherIsWaiting = true;
+            }
+            else if(rdb_non.Checked)
+            {
+                ModifiedFurnisherIsWaiting = false;
+            }
+
+            Fournisseur ModifiedFurnisher = new Fournisseur(SelectedID, txt_nom_du_fournisseur.Text, txt_email_du_fournisseur.Text,
+                txt_adresse_du_fournisseur.Text, txt_ville_du_fournisseur.Text, int.Parse(txt_Code_Postal_du_fournisseur.Text),
+                txt_pays_du_fournisseur.Text, ModifiedFurnisherIsWaiting);
+
+            SpecificData.SetSelectedFournisseur(ModifiedFurnisher);
+            SpecificData.ModifyFurnisherList();
+            this.Close();
         }
     }
 }

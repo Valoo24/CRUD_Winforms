@@ -110,6 +110,7 @@
             this.btn_Supprimer.TabIndex = 4;
             this.btn_Supprimer.Text = "Supprimer un fournisseur";
             this.btn_Supprimer.UseVisualStyleBackColor = true;
+            this.btn_Supprimer.Click += new System.EventHandler(this.btn_Supprimer_Click);
             // 
             // btn_Chercher
             // 

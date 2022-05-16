@@ -21,21 +21,14 @@ namespace WUI
                SpecificData.SetFurnisherList(DataAccess.GetListfromFile(OFD.FileName));
                SpecificData.SetLastID(SpecificData.GetID(OFD.FileName));
             }
-            foreach(Fournisseur fournisseur in SpecificData.GetFurnisherList())
-            {
-                lst_Fournisseurs.Items.Add(fournisseur);
-            }
+            ReloadListDisplay();
         }
 
         private void btn_Creer_Click(object sender, EventArgs e)
         {
             using CreationForm creationForm = new CreationForm();
             creationForm.ShowDialog();
-            lst_Fournisseurs.Items.Clear();
-            foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
-            {
-                lst_Fournisseurs.Items.Add(fournisseur);
-            }
+            ReloadListDisplay();
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
@@ -48,15 +41,12 @@ namespace WUI
             SpecificData.SetSelectedFournisseur((Fournisseur)lst_Fournisseurs.SelectedItem);
             using ModifyForm modifyForm = new ModifyForm();
             modifyForm.ShowDialog();
+            ReloadListDisplay();
         }
 
         private void btn_reloadList_Click(object sender, EventArgs e)
         {
-            lst_Fournisseurs.Items.Clear();
-            foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
-            {
-                lst_Fournisseurs.Items.Add(fournisseur);
-            }
+            ReloadListDisplay();
         }
 
         private void btn_Chercher_Click(object sender, EventArgs e)
@@ -70,6 +60,21 @@ namespace WUI
                 {
                     lst_Fournisseurs.Items.Add(fournisseur);
                 }
+            }
+        }
+
+        private void btn_Supprimer_Click(object sender, EventArgs e)
+        {
+            SpecificData.DeleteInFurnisherList((Fournisseur)lst_Fournisseurs.SelectedItem);
+            ReloadListDisplay();
+        }
+
+        private void ReloadListDisplay()
+        {
+            lst_Fournisseurs.Items.Clear();
+            foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
+            {
+                lst_Fournisseurs.Items.Add(fournisseur);
             }
         }
     }

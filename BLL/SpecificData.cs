@@ -41,6 +41,22 @@ namespace BLL
         {
             FurnisherList.Add(NewFournisseur);
         }
+        public static void ModifyFurnisherList()
+        {
+            Fournisseur NewFurnisherInfo = GetSelectedFournisseur();
+            NewFurnisherInfo.SetNewUpdateDate();
+            for(int i = 0; i < FurnisherList.Count; i++)
+            {
+                if(FurnisherList[i].Id == NewFurnisherInfo.Id)
+                {
+                    FurnisherList[i] = NewFurnisherInfo;
+                }
+            }
+        }
+        public static void DeleteInFurnisherList(Fournisseur FurnisherToDelete)
+        {
+            FurnisherList.RemoveAt(FurnisherToDelete.Id - 1);
+        }
         #endregion
         #region Méthodes SearchedList
         public static IList<Fournisseur> GetSearchedList()
