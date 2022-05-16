@@ -10,7 +10,6 @@ namespace BLL
 {
     public static class SpecificData
     {
-        static string SavePath = "Save_File2.csv";
         static int LastID = 0;
         static IList<Fournisseur> FurnisherList = new List<Fournisseur>();
         static IList<Fournisseur> FurnisherFoundList = new List<Fournisseur>();
@@ -89,9 +88,5 @@ namespace BLL
             SelectedFournisseur = Furnisher;
         }
         #endregion
-        public static string GetSavePath()
-        {
-            return SavePath;
-        }
     }
 }

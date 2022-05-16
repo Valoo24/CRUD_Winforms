@@ -16,4 +16,8 @@ namespace Models
         Oui = 0,
         Non = 1
     }
+    public enum TypeOfData
+    {
+        Fournisseur = 0
+    }
 }

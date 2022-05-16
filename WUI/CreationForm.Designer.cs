@@ -204,6 +204,7 @@
             this.Controls.Add(this.lbl_Nom);
             this.Name = "CreationForm";
             this.Text = "Création d\'un fournisseur";
+            this.Load += new System.EventHandler(this.CreationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

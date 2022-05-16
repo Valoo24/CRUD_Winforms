@@ -27,7 +27,7 @@ namespace WUI
 
         private void sauvegarderLaListeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataAccess.SaveFurnisherFile(SpecificData.GetSavePath(), SpecificData.GetFurnisherList(), SpecificData.GetLastID());
+            DataAccess.SaveFile(TypeOfData.Fournisseur);
             MessageBox.Show("Fichier Enregistré avec succès !");
         }
         #endregion
@@ -41,8 +41,11 @@ namespace WUI
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            LoadData(SpecificData.GetSavePath());
+            LoadData(DataAccess.GetSavePath(TypeOfData.Fournisseur));
             ReloadListDisplay();
+            MailExtension.AddToMailExtensonList("com");
+            MailExtension.AddToMailExtensonList("fr");
+            MailExtension.AddToMailExtensonList("be");
         }
 
         private void btn_Modifier_Click(object sender, EventArgs e)

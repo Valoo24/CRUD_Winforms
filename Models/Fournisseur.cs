@@ -1,4 +1,6 @@
-﻿namespace Models
+﻿using System.Text;
+
+namespace Models
 {
     public class Fournisseur
     {
@@ -76,12 +78,12 @@
 
             if(this.CreationDate != null)
             {
-                FurnisherText += $"{this.CreationDate}\t";
+                FurnisherText += $"Date de Création: {this.CreationDate}\t";
             }
 
             if(this.LastUpdatedDate != null)
             {
-                FurnisherText += $"{this.LastUpdatedDate}";
+                FurnisherText += $"Date de la dernière mise à jour: {this.LastUpdatedDate}";
             }
 
             return FurnisherText;
@@ -104,6 +106,60 @@
                 $"{this.CreationDate};{this.LastUpdatedDate}";
 
             return SaveText;
+        }
+
+        public bool HasANameMinOfThreeChar()
+        {
+            Char[] TestArray = this.Name.ToCharArray();
+            if (TestArray.GetLength(0) > 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool HasAValidEMail()
+        {
+            IList<string> TestExtensionList;
+            bool HasArrowBase = false;
+            bool HasCorrectExtension = false;
+            StringBuilder stringBuilder = new StringBuilder();
+            Char[] TestArray = this.Email.ToCharArray();
+            for(int i = 0; i < TestArray.GetLength(0); i++)
+            {
+                if (TestArray[i] == '@')
+                {
+                    HasArrowBase = true;
+                }
+
+                if(TestArray[i] == '.')
+                {
+                    for(int j = i + 1; j < TestArray.GetLength(0); j++)
+                    {
+                        stringBuilder.Append(TestArray[j]);
+                    }
+                }
+            }
+
+            foreach(string Extension in MailExtension.GetEmailExtensionList())
+            {
+                if (stringBuilder.ToString() == Extension)
+                {
+                    HasCorrectExtension = true;
+                }
+            }
+
+            if(HasCorrectExtension && HasArrowBase)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
         }
     }
 }

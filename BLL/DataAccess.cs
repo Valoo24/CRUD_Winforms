@@ -8,9 +8,19 @@ namespace BLL
         {
             return FileUtility.GetFurnisherData(FilePath);
         }
-        public static void SaveFurnisherFile(string FilePath, IList<Fournisseur> FurnisherList, int LastID)
+        public static void SaveFile(TypeOfData TypeOfDataToSave)
         {
-            FileUtility.SaveFile(FilePath, FurnisherList, LastID);
+            if (TypeOfDataToSave == TypeOfData.Fournisseur)
+            {
+                FileUtility.SaveFurnisherFile(SpecificData.GetFurnisherList(), SpecificData.GetLastID());
+            }
+        }
+        public static string GetSavePath(TypeOfData TypeOfTheFile)
+        {
+            //if(TypeOfTheFile == TypeOfData.Fournisseur)
+            //{
+                return FileUtility.GetSaveFurnicherFilePath();
+            //}
         }
     }
 }
