@@ -41,7 +41,7 @@ namespace WUI
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            LoadData(TypeOfData.Fournisseur);
+            LoadData();
             ReloadListDisplay();
             MailExtension.AddToMailExtensonList("com");
             MailExtension.AddToMailExtensonList("fr");
@@ -108,6 +108,9 @@ namespace WUI
         }
         #endregion
         #region Méthodes Custom
+        /// <summary>
+        /// Recharge la liste complète des fournisseurs.
+        /// </summary>
         private void ReloadListDisplay()
         {
             lst_Fournisseurs.Items.Clear();
@@ -116,18 +119,34 @@ namespace WUI
                 lst_Fournisseurs.Items.Add(fournisseur);
             }
         }
+        /// <summary>
+        /// Charge des données selon leurs types.
+        /// </summary>
+        /// <param name="DataToLoad">Type de données à charger.</param>
         private void LoadData(TypeOfData DataToLoad)
         {
             if (DataToLoad == TypeOfData.Fournisseur)
             {
-                SpecificData.SetFurnisherList(DataAccess.GetListfromFile(DataAccess.GetSavePath(DataToLoad)));
+                SpecificData.SetFurnisherList(DataAccess.GetFurnisherListfromFile(DataAccess.GetSavePath(DataToLoad)));
                 SpecificData.SetLastID(SpecificData.GetIDFromFile(DataAccess.GetSavePath(DataToLoad)));
             }
         }
+        /// <summary>
+        /// Charge des données selon le chemin d'accès à un fichier.
+        /// </summary>
+        /// <param name="FilePath">Chemin d'accès au fichier à charger.</param>
         private void LoadData(string FilePath)
         {
-            SpecificData.SetFurnisherList(DataAccess.GetListfromFile(FilePath));
+            SpecificData.SetFurnisherList(DataAccess.GetFurnisherListfromFile(FilePath));
             SpecificData.SetLastID(SpecificData.GetIDFromFile(FilePath));
+        }
+        /// <summary>
+        /// Charge les données depuis les fichiers de sauvegardes standards.
+        /// </summary>
+        private void LoadData()
+        {
+            SpecificData.SetFurnisherList(DataAccess.GetFurnisherListFromFile());
+            SpecificData.SetLastID(SpecificData.GetLastID());
         }
         #endregion
     }

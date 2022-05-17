@@ -14,6 +14,9 @@ namespace WUI
 {
     public partial class CreationForm : Form
     {
+        /// <summary>
+        /// Liste des TextBoxs au sein de cette form. Est initialisé lors du chargement de cette form.
+        /// </summary>
         IList<TextBox> TextBoxList = new List<TextBox>();
         public CreationForm()
         {
@@ -54,7 +57,7 @@ namespace WUI
             {
                Fournisseur NewFurnisher = new Fournisseur(NewID, txt_nom_du_fournisseur.Text, txt_Email_du_fournisseur.Text,
                     txt_adresse_du_fournisseur.Text, txt_ville_du_fournisseur.Text, int.Parse(txt_codePostal_du_fournisseur.Text), txt_pays_du_fournisseur.Text,
-                    Command);
+                    Command, DateTime.Now);
 
                 if(!NewFurnisher.HasANameMinOfThreeChar())
                 {

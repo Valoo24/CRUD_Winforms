@@ -14,8 +14,15 @@ namespace WUI
 {
     public partial class ModifyForm : Form
     {
+        /// <summary>
+        /// ID du fournisseur sélectionné. Initialisé à 0 par défaut.
+        /// </summary>
         int SelectedID = 0;
+        /// <summary>
+        /// Liste de toutes les TextBoxs au sein de cette form. Est initialisé lors du chargement de cette form.
+        /// </summary>
         IList<TextBox> TextBoxList = new List<TextBox>();
+        Fournisseur SelectedFurnisher = SpecificData.GetSelectedFournisseur();
         public ModifyForm()
         {
             InitializeComponent();
@@ -29,7 +36,6 @@ namespace WUI
             TextBoxList.Add(txt_ville_du_fournisseur);
             TextBoxList.Add(txt_Code_Postal_du_fournisseur);
             TextBoxList.Add(txt_pays_du_fournisseur);
-            Fournisseur SelectedFurnisher = SpecificData.GetSelectedFournisseur();
             SelectedID = SelectedFurnisher.Id;
             txt_nom_du_fournisseur.Text = SelectedFurnisher.Name;
             txt_adresse_du_fournisseur.Text = SelectedFurnisher.Street;
@@ -78,7 +84,7 @@ namespace WUI
             {
                 Fournisseur ModifiedFurnisher = new Fournisseur(SelectedID, txt_nom_du_fournisseur.Text, txt_email_du_fournisseur.Text,
                     txt_adresse_du_fournisseur.Text, txt_ville_du_fournisseur.Text, int.Parse(txt_Code_Postal_du_fournisseur.Text),
-                    txt_pays_du_fournisseur.Text, ModifiedFurnisherIsWaiting);
+                    txt_pays_du_fournisseur.Text, ModifiedFurnisherIsWaiting, (DateTime)SelectedFurnisher.CreationDate);
 
                 if (!ModifiedFurnisher.HasANameMinOfThreeChar())
                 {
