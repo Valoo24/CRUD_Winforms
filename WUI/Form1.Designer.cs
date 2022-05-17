@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chargerUnFichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +98,7 @@
             // 
             this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Name = "modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem";
             this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Size = new System.Drawing.Size(349, 22);
+            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
             this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Text = "Ajouter une extension d\'adresse e-mail";
             this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Click += new System.EventHandler(this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem_Click);
             // 
@@ -181,6 +182,7 @@
             this.Controls.Add(this.lst_Fournisseurs);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main_Form";
             this.Text = "Liste de fournisseurs";

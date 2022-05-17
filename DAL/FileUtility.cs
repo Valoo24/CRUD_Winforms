@@ -90,10 +90,17 @@ namespace DAL
             if (File.Exists(FurnisherSaveFilePath))
             {
                 string[] Content = File.ReadAllLines(FurnisherSaveFilePath, Encoding.UTF8);
-                string[] LastLine = Content[Content.GetLength(0) - 1].Split(";");
-                if (int.TryParse(LastLine[1], out int ID))
+                if (Content.GetLength(0) > 0)
                 {
-                    return ID;
+                    string[] LastLine = Content[Content.GetLength(0) - 1].Split(";");
+                    if (int.TryParse(LastLine[1], out int ID))
+                    {
+                        return ID;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
                 else
                 {
@@ -177,15 +184,8 @@ namespace DAL
                         List.Add(MailExtensions[i]);
                     }
                 }
-                return List;
             }
-            else
-            {
-                List.Add("com");
-                List.Add("fr");
-                List.Add("be");
-                return List;
-            }
+            return List;
         }
         /// <summary>
         /// Définit ce qui sera écrit dans un fichier de sauvegarde.
