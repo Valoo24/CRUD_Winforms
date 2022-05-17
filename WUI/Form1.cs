@@ -41,7 +41,7 @@ namespace WUI
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            LoadData(DataAccess.GetSavePath(TypeOfData.Fournisseur));
+            LoadData(TypeOfData.Fournisseur);
             ReloadListDisplay();
             MailExtension.AddToMailExtensonList("com");
             MailExtension.AddToMailExtensonList("fr");
@@ -85,8 +85,26 @@ namespace WUI
 
         private void btn_Supprimer_Click(object sender, EventArgs e)
         {
-                SpecificData.DeleteInFurnisherList((Fournisseur)lst_Fournisseurs.SelectedItem);
-                ReloadListDisplay();
+            if (lst_Fournisseurs.SelectedItem != null)
+            {
+                using ConfirmForm confirmForm = new ConfirmForm();
+                confirmForm.ShowDialog();
+                if (DataCheck.GetConfirmation())
+                {
+                    SpecificData.DeleteInFurnisherList(lst_Fournisseurs.SelectedIndex);
+                    ReloadListDisplay();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un fournisseur dans la liste pour pouvoir réaliser la suppression.");
+            }
+            DataCheck.SetConfirmTo(false);
+        }
+        private void sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataAccess.SaveFile(TypeOfData.MailExtension);
+            MessageBox.Show("Fichier enregistré avec succès !");
         }
         #endregion
         #region Méthodes Custom
@@ -96,6 +114,14 @@ namespace WUI
             foreach (Fournisseur fournisseur in SpecificData.GetFurnisherList())
             {
                 lst_Fournisseurs.Items.Add(fournisseur);
+            }
+        }
+        private void LoadData(TypeOfData DataToLoad)
+        {
+            if (DataToLoad == TypeOfData.Fournisseur)
+            {
+                SpecificData.SetFurnisherList(DataAccess.GetListfromFile(DataAccess.GetSavePath(DataToLoad)));
+                SpecificData.SetLastID(SpecificData.GetIDFromFile(DataAccess.GetSavePath(DataToLoad)));
             }
         }
         private void LoadData(string FilePath)

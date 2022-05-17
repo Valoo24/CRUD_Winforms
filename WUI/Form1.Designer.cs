@@ -40,6 +40,7 @@
             this.btn_Supprimer = new System.Windows.Forms.Button();
             this.btn_Chercher = new System.Windows.Forms.Button();
             this.btn_reloadList = new System.Windows.Forms.Button();
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip1.Size = new System.Drawing.Size(122, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(242, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,7 +87,8 @@
             // éditionToolStripMenuItem
             // 
             this.éditionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem});
+            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem,
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem});
             this.éditionToolStripMenuItem.Name = "éditionToolStripMenuItem";
             this.éditionToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.éditionToolStripMenuItem.Text = "Édition";
@@ -104,14 +106,14 @@
             this.lst_Fournisseurs.ItemHeight = 15;
             this.lst_Fournisseurs.Location = new System.Drawing.Point(12, 24);
             this.lst_Fournisseurs.Name = "lst_Fournisseurs";
-            this.lst_Fournisseurs.Size = new System.Drawing.Size(1191, 394);
+            this.lst_Fournisseurs.Size = new System.Drawing.Size(1184, 394);
             this.lst_Fournisseurs.TabIndex = 1;
             // 
             // btn_Creer
             // 
             this.btn_Creer.Location = new System.Drawing.Point(12, 426);
             this.btn_Creer.Name = "btn_Creer";
-            this.btn_Creer.Size = new System.Drawing.Size(260, 23);
+            this.btn_Creer.Size = new System.Drawing.Size(232, 23);
             this.btn_Creer.TabIndex = 2;
             this.btn_Creer.Text = "Ajouter un fournisseur";
             this.btn_Creer.UseVisualStyleBackColor = true;
@@ -119,9 +121,9 @@
             // 
             // btn_Modifier
             // 
-            this.btn_Modifier.Location = new System.Drawing.Point(810, 426);
+            this.btn_Modifier.Location = new System.Drawing.Point(726, 426);
             this.btn_Modifier.Name = "btn_Modifier";
-            this.btn_Modifier.Size = new System.Drawing.Size(260, 23);
+            this.btn_Modifier.Size = new System.Drawing.Size(232, 23);
             this.btn_Modifier.TabIndex = 3;
             this.btn_Modifier.Text = "Modifier un fournisseur";
             this.btn_Modifier.UseVisualStyleBackColor = true;
@@ -129,9 +131,9 @@
             // 
             // btn_Supprimer
             // 
-            this.btn_Supprimer.Location = new System.Drawing.Point(1076, 426);
+            this.btn_Supprimer.Location = new System.Drawing.Point(964, 426);
             this.btn_Supprimer.Name = "btn_Supprimer";
-            this.btn_Supprimer.Size = new System.Drawing.Size(260, 23);
+            this.btn_Supprimer.Size = new System.Drawing.Size(232, 23);
             this.btn_Supprimer.TabIndex = 4;
             this.btn_Supprimer.Text = "Supprimer un fournisseur";
             this.btn_Supprimer.UseVisualStyleBackColor = true;
@@ -139,9 +141,9 @@
             // 
             // btn_Chercher
             // 
-            this.btn_Chercher.Location = new System.Drawing.Point(278, 426);
+            this.btn_Chercher.Location = new System.Drawing.Point(250, 426);
             this.btn_Chercher.Name = "btn_Chercher";
-            this.btn_Chercher.Size = new System.Drawing.Size(260, 23);
+            this.btn_Chercher.Size = new System.Drawing.Size(232, 23);
             this.btn_Chercher.TabIndex = 5;
             this.btn_Chercher.Text = "Chercher un fournisseur";
             this.btn_Chercher.UseVisualStyleBackColor = true;
@@ -149,19 +151,26 @@
             // 
             // btn_reloadList
             // 
-            this.btn_reloadList.Location = new System.Drawing.Point(544, 426);
+            this.btn_reloadList.Location = new System.Drawing.Point(488, 426);
             this.btn_reloadList.Name = "btn_reloadList";
-            this.btn_reloadList.Size = new System.Drawing.Size(260, 23);
+            this.btn_reloadList.Size = new System.Drawing.Size(232, 23);
             this.btn_reloadList.TabIndex = 6;
             this.btn_reloadList.Text = "Recharger la liste";
             this.btn_reloadList.UseVisualStyleBackColor = true;
             this.btn_reloadList.Click += new System.EventHandler(this.btn_reloadList_Click);
             // 
+            // sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem
+            // 
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Name = "sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem";
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Size = new System.Drawing.Size(369, 22);
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Text = "Sauvegarder la liste des Extensions d\'adresses e-mail";
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Click += new System.EventHandler(this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1348, 461);
+            this.ClientSize = new System.Drawing.Size(1207, 461);
             this.Controls.Add(this.btn_reloadList);
             this.Controls.Add(this.btn_Chercher);
             this.Controls.Add(this.btn_Supprimer);
@@ -195,5 +204,6 @@
         private Button btn_reloadList;
         private ToolStripMenuItem éditionToolStripMenuItem;
         private ToolStripMenuItem modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem;
+        private ToolStripMenuItem sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem;
     }
 }

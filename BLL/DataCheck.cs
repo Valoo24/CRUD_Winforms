@@ -8,6 +8,7 @@ namespace BLL
 {
     public static class DataCheck
     {
+        static bool Confirm = false;
         public static bool TextBoxHasText(string TextBoxText)
         {
             Char[] TestArray = TextBoxText.ToCharArray();
@@ -19,6 +20,14 @@ namespace BLL
             {
                 return false;
             }
+        }
+        public static bool GetConfirmation()
+        {
+            return Confirm;
+        }
+        public static void SetConfirmTo(bool Confirmation)
+        {
+            Confirm = Confirmation;
         }
     }
 }

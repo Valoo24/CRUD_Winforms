@@ -52,9 +52,9 @@ namespace BLL
                 }
             }
         }
-        public static void DeleteInFurnisherList(Fournisseur FurnisherToDelete)
+        public static void DeleteInFurnisherList(int IndexToDelete)
         {
-            FurnisherList.RemoveAt(FurnisherToDelete.Id - 1);
+            FurnisherList.RemoveAt(IndexToDelete);
         }
         #endregion
         #region Méthodes SearchedList

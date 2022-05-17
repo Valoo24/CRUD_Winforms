@@ -35,10 +35,10 @@ namespace Models
                 this.IsWaitingForCommand = false;
             }
 
-            if (Elements.GetLength(0) > 8)
+            if (Elements.GetLength(0) > 9)
             {
                 this.CreationDate = Convert.ToDateTime(Elements[8]);
-                if(Elements.GetLength(0) > 9)
+                if(Elements.GetLength(0) > 10)
                 {
                     this.LastUpdatedDate = Convert.ToDateTime(Elements[9]);
                 }
