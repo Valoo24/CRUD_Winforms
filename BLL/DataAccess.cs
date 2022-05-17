@@ -35,23 +35,12 @@ namespace BLL
             }
         }
         /// <summary>
-        /// Renvoie le chemin d'accès au fichier de sauvegarde selon le type de données.
+        /// Renvoie la liste des extensions d'adresses email depuis le chemin d'accès standard au fichier de sauvegarde des extensions d'adresses
+        /// mail.
         /// </summary>
-        /// <param name="TypeOfTheFile">Type de données dont on veut le chemin d'accès au fichier de sauvegarde.</param>
-        public static string GetSavePath(TypeOfData TypeOfTheFile)
+        public static IList<string> GetMailExtensionsData()
         {
-            if(TypeOfTheFile == TypeOfData.Fournisseur)
-            {
-                return FileUtility.GetFurnisherSaveFilePath();
-            }
-            else if(TypeOfTheFile == TypeOfData.MailExtension)
-            {
-                return FileUtility.GetMailExtensionSaveFilePath();
-            }
-            else
-            {
-                return null;
-            }
+            return FileUtility.GetMailExtensionData();
         }
     }
 }

@@ -34,13 +34,13 @@
             this.sauvegarderLaListeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.éditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lst_Fournisseurs = new System.Windows.Forms.ListBox();
             this.btn_Creer = new System.Windows.Forms.Button();
             this.btn_Modifier = new System.Windows.Forms.Button();
             this.btn_Supprimer = new System.Windows.Forms.Button();
             this.btn_Chercher = new System.Windows.Forms.Button();
             this.btn_reloadList = new System.Windows.Forms.Button();
-            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip1.Size = new System.Drawing.Size(242, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(122, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -96,9 +96,18 @@
             // modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem
             // 
             this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Name = "modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem";
-            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Size = new System.Drawing.Size(369, 22);
-            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Text = "Modifier la liste des Extensions d\'adresses e-mail";
+            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Size = new System.Drawing.Size(349, 22);
+            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Text = "Ajouter une extension d\'adresse e-mail";
+            this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem.Click += new System.EventHandler(this.modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem_Click);
+            // 
+            // sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem
+            // 
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Name = "sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem";
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Size = new System.Drawing.Size(389, 22);
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Text = "Sauvegarder la liste des Extensions d\'adresses e-mail";
+            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Click += new System.EventHandler(this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem_Click);
             // 
             // lst_Fournisseurs
             // 
@@ -158,13 +167,6 @@
             this.btn_reloadList.Text = "Recharger la liste";
             this.btn_reloadList.UseVisualStyleBackColor = true;
             this.btn_reloadList.Click += new System.EventHandler(this.btn_reloadList_Click);
-            // 
-            // sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem
-            // 
-            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Name = "sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem";
-            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Size = new System.Drawing.Size(369, 22);
-            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Text = "Sauvegarder la liste des Extensions d\'adresses e-mail";
-            this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem.Click += new System.EventHandler(this.sauvegarderLaListeDesExtensionsDadressesEmailToolStripMenuItem_Click);
             // 
             // Main_Form
             // 

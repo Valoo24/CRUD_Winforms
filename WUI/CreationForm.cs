@@ -28,9 +28,6 @@ namespace WUI
             bool CanCreate = true;
             bool CanClose = true;
             bool Command = true;
-            int NewID = SpecificData.GetLastID();
-            NewID++;
-            SpecificData.SetLastID(NewID);
             if(rdb_oui.Checked)
             {
                 Command = true;
@@ -55,7 +52,7 @@ namespace WUI
 
             if (CanCreate)
             {
-               Fournisseur NewFurnisher = new Fournisseur(NewID, txt_nom_du_fournisseur.Text, txt_Email_du_fournisseur.Text,
+                Fournisseur NewFurnisher = new Fournisseur(0, txt_nom_du_fournisseur.Text, txt_Email_du_fournisseur.Text,
                     txt_adresse_du_fournisseur.Text, txt_ville_du_fournisseur.Text, int.Parse(txt_codePostal_du_fournisseur.Text), txt_pays_du_fournisseur.Text,
                     Command, DateTime.Now);
 
@@ -73,6 +70,8 @@ namespace WUI
 
                 if (CanClose)
                 {
+                    SpecificData.SetLastID(SpecificData.GetLastID() + 1);
+                    NewFurnisher.SetNewID(SpecificData.GetLastID());
                     SpecificData.AddFurnisher(NewFurnisher);
                     this.Close();
                 }

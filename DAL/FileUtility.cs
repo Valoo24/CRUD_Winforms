@@ -160,14 +160,32 @@ namespace DAL
             return MailExtensionSaveFilePath;
         }
         /// <summary>
-        /// Renvoie la liste des extensions d'adesses mail depuis le fichier de sauvegarde.
+        /// Renvoie la liste des extensions d'adesses mail depuis le fichier de sauvegarde standard.
         /// </summary>
-        /// <returns></returns>
         public static IList<string> GetMailExtensionData()
         {
             IList<string> List = new List<string>();
 
-            return List;
+            if (File.Exists(MailExtensionSaveFilePath))
+            {
+                string[] Content = File.ReadAllLines(MailExtensionSaveFilePath, Encoding.UTF8);
+                string[] MailExtensions = Content[0].Split(";");
+                for (int i = 0; i < MailExtensions.GetLength(0); i++)
+                {
+                    if (MailExtensions[i] != "")
+                    {
+                        List.Add(MailExtensions[i]);
+                    }
+                }
+                return List;
+            }
+            else
+            {
+                List.Add("com");
+                List.Add("fr");
+                List.Add("be");
+                return List;
+            }
         }
         /// <summary>
         /// Définit ce qui sera écrit dans un fichier de sauvegarde.

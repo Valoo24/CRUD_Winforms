@@ -26,3 +26,4 @@ C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.CreationFo
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.SearchForm.resources
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.ModifyForm.resources
 C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.ConfirmForm.resources
+C:\Users\Benji\Desktop\CRUD Winforms\WUI\obj\Debug\net6.0-windows\WUI.AjoutMailExtension.resources

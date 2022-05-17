@@ -15,14 +15,18 @@ namespace WUI
         #region Méthodes du menu "Fichier"
         private void chargerUnFichierToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string FilePath;
             OpenFileDialog OFD = new OpenFileDialog();
             OFD.Filter = "Ficher csv (*.csv)|*.csv";
             if (OFD.ShowDialog() == DialogResult.OK)
             {
-                LoadData(OFD.FileName);
+                LoadData(TypeOfData.Fournisseur,OFD.FileName);
             }
             ReloadListDisplay();
+            if(SpecificData.GetFurnisherList().Count == 0)
+            {
+                MessageBox.Show("Le fichier que vous essayez de charger ne correspond pas à un fichier fournisseur correct. Veuillez choisir" +
+                    "un fichier correct ou créer une nouvelle liste de fournisseur.");
+            }
         }
 
         private void sauvegarderLaListeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,9 +47,6 @@ namespace WUI
         {
             LoadData();
             ReloadListDisplay();
-            MailExtension.AddToMailExtensonList("com");
-            MailExtension.AddToMailExtensonList("fr");
-            MailExtension.AddToMailExtensonList("be");
         }
 
         private void btn_Modifier_Click(object sender, EventArgs e)
@@ -106,6 +107,11 @@ namespace WUI
             DataAccess.SaveFile(TypeOfData.MailExtension);
             MessageBox.Show("Fichier enregistré avec succès !");
         }
+        private void modifierLaListeDesExtensionsDadressesEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AjoutMailExtension AjoutForm = new AjoutMailExtension();
+            AjoutForm.ShowDialog();
+        }
         #endregion
         #region Méthodes Custom
         /// <summary>
@@ -120,25 +126,17 @@ namespace WUI
             }
         }
         /// <summary>
-        /// Charge des données selon leurs types.
+        /// Charge des données selon le chemin d'accès à un fichier et le type de données à charger.
         /// </summary>
         /// <param name="DataToLoad">Type de données à charger.</param>
-        private void LoadData(TypeOfData DataToLoad)
-        {
-            if (DataToLoad == TypeOfData.Fournisseur)
-            {
-                SpecificData.SetFurnisherList(DataAccess.GetFurnisherListfromFile(DataAccess.GetSavePath(DataToLoad)));
-                SpecificData.SetLastID(SpecificData.GetIDFromFile(DataAccess.GetSavePath(DataToLoad)));
-            }
-        }
-        /// <summary>
-        /// Charge des données selon le chemin d'accès à un fichier.
-        /// </summary>
         /// <param name="FilePath">Chemin d'accès au fichier à charger.</param>
-        private void LoadData(string FilePath)
+        private void LoadData(TypeOfData DataToLoad,string FilePath)
         {
-            SpecificData.SetFurnisherList(DataAccess.GetFurnisherListfromFile(FilePath));
-            SpecificData.SetLastID(SpecificData.GetIDFromFile(FilePath));
+            if(DataToLoad == TypeOfData.Fournisseur)
+            {
+                SpecificData.SetFurnisherList(DataAccess.GetFurnisherListfromFile(FilePath));
+                SpecificData.SetLastID(SpecificData.GetIDFromFile(FilePath));
+            }
         }
         /// <summary>
         /// Charge les données depuis les fichiers de sauvegardes standards.
@@ -146,7 +144,8 @@ namespace WUI
         private void LoadData()
         {
             SpecificData.SetFurnisherList(DataAccess.GetFurnisherListFromFile());
-            SpecificData.SetLastID(SpecificData.GetLastID());
+            SpecificData.SetLastID(SpecificData.GetIDFromFile());
+            MailExtension.SetMailExtensionList(DataAccess.GetMailExtensionsData());
         }
         #endregion
     }

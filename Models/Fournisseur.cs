@@ -76,13 +76,17 @@ namespace Models
             SetNewUpdateDate();
         }
         #endregion
-        #region
+        #region Méthodes
         /// <summary>
         /// Enregistre une nouvelle date de mise à jour du fournisseur.
         /// </summary>
         public void SetNewUpdateDate()
         {
             this.LastUpdatedDate = DateTime.Now;
+        }
+        public void SetNewID(int NewID)
+        {
+            this.Id = NewID;
         }
         /// <summary>
         /// Extension de la méthodes ToString pour écrire correctement le fournisseur dans la liste de fournisseurs.
